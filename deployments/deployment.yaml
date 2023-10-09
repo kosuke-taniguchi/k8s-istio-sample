@@ -1,0 +1,51 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: k8s-sample-v1
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: k8s-sample
+      version: v1
+  template:
+    metadata:
+      labels:
+        app: k8s-sample
+        version: v1
+    spec:
+      containers:
+      - image: k8s-sample:v1
+        imagePullPolicy: IfNotPresent
+        name: k8s-sample
+        env:
+        - name: MSG
+          value: This app is version 1
+        ports:
+        - containerPort: 8080
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: k8s-sample
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: k8s-sample
+      version: v2
+  template:
+    metadata:
+      labels:
+        app: k8s-sample
+        version: v2
+    spec:
+      containers:
+      - image: k8s-sample:v1
+        imagePullPolicy: IfNotPresent
+        name: k8s-sample
+        env:
+        - name: MSG
+          value: New app is version 2
+        ports:
+        - containerPort: 8080

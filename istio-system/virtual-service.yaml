@@ -4,19 +4,19 @@ metadata:
   name: app
 spec:
   hosts:
-  - "*"
+  - "*" # 全てのトラフィックへの宛先を受け付ける
   gateways:
-  - web-gateway
+  - web-gateway # 作成したingressGatewayを指定
   http:
   - route:
     - destination:
-        host: k8s-sample
-        subset: v1
+        host: k8s-sample-service # k8sのServiceリソースを指定
+        subset: v1 # DestinationRuleで定義したルールに従ってトラフィックを流す
         port:
           number: 8080
       weight: 50
     - destination:
-        host: k8s-sample
+        host: k8s-sample-service
         subset: v2
         port:
           number: 8080

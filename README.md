@@ -1,6 +1,6 @@
 # kindを使ってk8s、istio周りをいじってみたのでメモ
 ## やったこと・手順
-- kindでclusterを作成
+- [kind](https://kind.sigs.k8s.io/)でclusterを作成
   - `kind create cluster --config=multi-node.yaml`
 - goのファイルを作成
   - 適当に環境変数を表示させるみたいな

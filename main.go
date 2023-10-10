@@ -1,7 +1,6 @@
 package main
 
 import (
-	"fmt"
 	"net/http"
 	"os"
 
@@ -18,7 +17,6 @@ func main() {
   
 	e.GET("/", func(c echo.Context) error {
 		msg := os.Getenv("MSG")
-		fmt.Println(msg)
 		return c.JSON(http.StatusOK, msg)
 	})
   

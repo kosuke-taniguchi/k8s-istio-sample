@@ -1,0 +1,17 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Rollout
+metadata:
+  name: k8s-sample-rollout
+spec:
+  replicas: 4
+  workloadRef:
+    apiVersion: apps/v1
+    kind: Deployment
+    name: k8s-sample-v1
+  strategy:
+    canary:
+      steps:
+      - setWeight: 50
+      - pause: {}
+      - setWeight: 80
+      - pause: {duration: 30}

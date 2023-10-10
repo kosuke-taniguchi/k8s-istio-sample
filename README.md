@@ -1,4 +1,4 @@
-# kindを使ってk8s、istio周りをいじってみたのでメモ
+# kindを使ってk8s、istio, ArgoRollouts周りをいじってみたのでメモ
 ## やったこと・手順
 - [kind](https://kind.sigs.k8s.io/)でclusterを作成
   - `kind create cluster --config=multi-node.yaml`
@@ -22,3 +22,11 @@
 - istioのマニフェストapply
   - `kubectl apply -f {ファイル名}`
 - `curl localhost:30070`で確認できる
+
+## ArgoRollouts手順
+- rollout.yaml作成
+- `kubectl apply -f ./deployments/rollout.yaml`
+### 新しいDockerイメージをデプロイする際
+- docker build
+- deployments/deployment.yamlのimageバージョン更新
+- `kubectl apply -f ./deployments/deployment.yaml`

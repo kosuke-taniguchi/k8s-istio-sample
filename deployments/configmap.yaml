@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: k8s-sample-cm
+  namespace: k8s-sample
+data:
+  api_version: "1.20.0"
